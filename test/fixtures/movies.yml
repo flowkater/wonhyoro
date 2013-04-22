@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  video: MyString
+  videable_id: 1
+  videable_type: MyString
+
+two:
+  video: MyString
+  videable_id: 1
+  videable_type: MyString

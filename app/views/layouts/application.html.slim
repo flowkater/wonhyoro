@@ -1,0 +1,10 @@
+doctype 5
+html
+	head
+		title 원효로 1가 13-25
+		= stylesheet_link_tag "application", media: "all"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+	body
+		.container
+			= yield
