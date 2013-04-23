@@ -1,0 +1,12 @@
+.navbar.navbar-fixed-top.navbar-inverse
+	.navbar-inner
+		.container
+			= link_to "원효로 1가 13-25", root_path, class: "brand"
+			.nav-collapse.collapse#main-menu
+			ul.nav.pull-right#main-menu-right
+				li
+					= link_to "이벤트", events_path
+				li 
+					= link_to "공지", notis_path
+				li
+					= link_to "로그아웃", destroy_user_session_path, method: :delete

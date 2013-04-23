@@ -1,6 +1,20 @@
-p#notice = notice
+p = @event.title
+p = @event.content
 
+.tabbable.tabs-left
+	ul.nav.nav-tabs
+		li.active
+			a href="#picture" data-toggle="tab" 포스터(picture)
+		li
+			a href="#teaser" data-toggle="tab" 티저
+	.tab-content
+		.tab-pane.active#picture
+			= render 'pictures/pictures'
+			= render 'pictures/form'
+		.tab-pane#teaser
+			= render 'teasers/teasers'
+			= link_to '새로운 티저 만들기', new_event_teaser_path(@event), class: "btn btn-info"
 
-= link_to 'Edit', edit_poster_path(@poster)
+= link_to 'Edit', edit_event_path(@event)
 '|
-= link_to 'Back', posters_path
+= link_to 'Back', events_path

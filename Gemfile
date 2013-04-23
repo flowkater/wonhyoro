@@ -37,6 +37,7 @@ gem 'carrierwave'
 # sidekiq
 # https://github.com/mperham/sidekiq
 gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', require: nil
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -60,8 +61,10 @@ gem 'jquery-rails'
 
 group :development do
   gem 'sqlite3'
-  gem 'thin'
   gem 'rails-erd'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :production do

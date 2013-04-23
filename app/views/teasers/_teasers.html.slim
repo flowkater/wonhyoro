@@ -1,0 +1,16 @@
+table.table.table-striped#teasers
+	tr
+		th 티저 내용
+		th
+		th
+	- @teasers.each do |teaser|
+		tr.teaser
+			td = teaser.content
+			td
+				= link_to '보기', teaser, class: "btn btn-success"
+				|&nbsp;
+				= link_to '수정', edit_event_teaser_path(@event, teaser), class: 'btn btn-info'
+				|&nbsp;
+				= link_to '삭제', teaser, confirm: 'Are you sure?', method: :delete, class: "btn btn-danger"
+			td
+				= link_to 'Push', push_teaser_path(teaser), confirm: '푸쉬를 보내겠습니까?', class: "btn btn-primary btn-larger", method: :put

@@ -2,6 +2,14 @@ require 'api_constraints'
 # http://railscasts.com/episodes/350-rest-api-versioning?view=asciicast
 
 Wonhyoro::Application.routes.draw do
+  
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
+  scope "/admindnjsgyfh1rk13ektl25" do
+    # skip 회원가입 x
+    devise_for :users, skip: [:registrations], path_names: { sign_in: 'login' }
+  end
 
   # namespace :api, defaults: {format: 'json'} do
   #   scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
@@ -12,12 +20,34 @@ Wonhyoro::Application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       resources :events
+
+      match "/init", to: "main#init", via: :get
     end
   end
 
-  resources :events
+  match "/dashboard", to: "main#dashboard"
 
-  root to: "events#index"
+  resources :events do
+    resources :pictures
+    resources :teasers
+    resources :attendships
+  end
+
+  resources :teasers do
+    member do
+      put 'push'
+    end
+    resources :pictures
+    resources :movies
+  end
+
+  resources :notis do
+    member do
+      put 'push'
+    end
+  end  
+
+  root to: "main#dashboard"
 
 
   # The priority is based upon order of creation:

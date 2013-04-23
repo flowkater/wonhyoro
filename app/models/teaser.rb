@@ -8,4 +8,22 @@ class Teaser < ActiveRecord::Base
   has_many :movies, as: :videoable
 
   belongs_to :event
+
+  def gcm_send
+    gcm = GCM.new(ENV['GCM_API_KEY'])
+    options = {data: {content: content, movies: movie_urls, images: image_urls}, collapse_key: Time.now}
+    response = gcm.send_notification(gcm_reg_ids, options)
+  end
+
+  def gcm_reg_ids
+    Gcm.all.collect { |g| g.reg_id }
+  end
+
+  def movie_urls
+    movies.collect{|m| m.video_url}
+  end
+
+  def image_urls
+    pictures.collect{|p| p.image_url}
+  end
 end

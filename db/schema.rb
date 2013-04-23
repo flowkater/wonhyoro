@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422081624) do
+ActiveRecord::Schema.define(:version => 20130423034009) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(:version => 20130422081624) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "gcms", :force => true do |t|
+    t.string   "reg_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "movies", :force => true do |t|
     t.string   "video_url"
     t.integer  "videoable_id"
@@ -45,6 +51,12 @@ ActiveRecord::Schema.define(:version => 20130422081624) do
   end
 
   add_index "movies", ["videoable_id", "videoable_type"], :name => "index_movies_on_videoable_id_and_videoable_type"
+
+  create_table "notis", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pictures", :force => true do |t|
     t.string   "image"
@@ -62,5 +74,25 @@ ActiveRecord::Schema.define(:version => 20130422081624) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.boolean  "is_super_admin",         :default => false
+    t.boolean  "is_admin",               :default => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

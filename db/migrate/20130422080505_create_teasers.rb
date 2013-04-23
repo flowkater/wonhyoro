@@ -6,5 +6,6 @@ class CreateTeasers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :teasers, [:event_id]
   end
 end
