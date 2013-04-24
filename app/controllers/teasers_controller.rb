@@ -39,8 +39,9 @@ class TeasersController < ApplicationController
 	def push
 		@teaser = Teaser.find(params[:id])	
 		@event = @teaser.event
+		@teaser.gcm_send
 
-		PushteasersWorker.perform_async(@teaser.id)
+		# PushteasersWorker.perform_async(@teaser.id)
 
 		redirect_to @event, notice: '푸쉬를 보냈습니다.'
 	end

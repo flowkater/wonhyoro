@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "sidekiq/capistrano"
 
 set :application, "wonhyoro"
 
@@ -27,7 +28,7 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 set :default_environment, { "PATH" => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/versions/1.9.3-p125/bin:$HOME/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems:$PATH"}
-ssh_options[:keys] = ["/home/kater102/.ssh/plaredspear.pem"]
+ssh_options[:keys] = ["/home/flowkater/.ssh/plaredspear.pem"]
 
 after "deploy", "deploy:cleanup"
 before "deploy:start", "deploy:db_migrate"
