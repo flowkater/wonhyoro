@@ -1,33 +1,36 @@
 require "bundler/capistrano"
-require "delayed/recipes"
 
 set :application, "wonhyoro"
 
+# Setup for SCM(Git)
 set :scm, :git
 set :repository, "git@github.com:flowkater/wonhyoro.git"
 set :branch, "master"
 set :scm_passphrase, "chjw102"
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-set :eip, "54.249.230.298"
+set :eip, "54.249.230.198"
 
-role :web, eip                          # Your HTTP server, Apache/etc
-role :app, eip                          # This may be the same as your `Web` server
+role :web, eip     # Your HTTP server, Apache/etc
+role :app, eip     # This may be the same as your `Web` server
 role :db,  eip, :primary => true # This is where Rails migrations will run
 
 set :user, "ubuntu"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
+set :keep_releases, 5
 set :rails_env, "production"
+set :normalize_asset_timestamps, false
+set :shared_children, shared_children + %w{public/uploads}
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-# ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "chjw102"]
 
 set :default_environment, { "PATH" => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/versions/1.9.3-p125/bin:$HOME/.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems:$PATH"}
+ssh_options[:keys] = ["/home/kater102/.ssh/plaredspear.pem"]
 
 after "deploy", "deploy:cleanup"
+before "deploy:start", "deploy:db_migrate"
 
 namespace :deploy do
   %w[start stop restart].each do |command|
@@ -35,6 +38,10 @@ namespace :deploy do
     task command, roles: :app, except: {no_release: true} do
       run "/etc/init.d/unicorn_#{application} #{command}"
     end
+  end
+
+  task :db_migrate do
+    run "cd #{deploy_to}/current && bundle exec rake db:migrate RAILS_ENV=production"
   end
 
   task :setup_config, roles: :app do
