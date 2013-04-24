@@ -1,5 +1,5 @@
 require "bundler/capistrano"
-require "sidekiq/capistrano"
+# require "sidekiq/capistrano"
 
 set :application, "wonhyoro"
 
@@ -27,8 +27,8 @@ set :shared_children, shared_children + %w{public/uploads}
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
-# set :default_environment, { "PATH" => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/versions/1.9.3-p392/bin:$HOME/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems:$PATH"}
-set :default_environment, {'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"}
+set :default_environment, { "PATH" => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/versions/1.9.3-p392/bin:$HOME/.rbenv/versions/1.9.3-p392/lib/ruby/gems/1.9.1/gems:$PATH"}
+# set :default_environment, {'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"}
 ssh_options[:keys] = ["/home/flowkater/.ssh/plaredspear.pem"]
 
 after "deploy", "deploy:cleanup"
