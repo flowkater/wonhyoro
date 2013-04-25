@@ -1,4 +1,4 @@
 = simple_form_for @event do |f|
-	= f.input :title
-	= f.input :content
-	= f.button :submit
+	= f.input :title, required: false, label: "이벤트 제목"
+	= f.input :content, required: false, label: "이벤트 내용"
+	= f.button :submit, '이벤트 업데이트', class: "btn btn-primary"

@@ -7,8 +7,9 @@
 			= link_to "이벤트", events_path
 		li.side-menu
 			= link_to "공지", notis_path
-		li.side-menu
-			= link_to "앱버전관리", app_path(app_version)
+		- if app_version
+			li.side-menu
+				= link_to "앱버전관리", app_path(app_version)
 		li.nav-header 현재 로그인 시간
 		li
 			= current_user.current_sign_in_at
