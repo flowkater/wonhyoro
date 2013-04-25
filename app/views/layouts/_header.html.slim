@@ -9,4 +9,6 @@
 				li 
 					= link_to "공지", notis_path
 				li
+					= link_to "앱버전관리", app_path(app_version)
+				li
 					= link_to "로그아웃", destroy_user_session_path, method: :delete

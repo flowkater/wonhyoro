@@ -42,6 +42,8 @@ Wonhyoro::Application.routes.draw do
     resources :movies
   end
 
+  resources :apps, only: [:new, :create, :edit, :update, :show]
+
   resources :notis do
     member do
       put 'push'
