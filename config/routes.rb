@@ -11,14 +11,8 @@ Wonhyoro::Application.routes.draw do
     devise_for :users, skip: [:registrations], path_names: { sign_in: 'login' }
   end
 
-  # namespace :api, defaults: {format: 'json'} do
-  #   scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-  #     resources :posters
-  #   end
-  # end
-
   namespace :api, defaults: {format: 'json'} do
-    namespace :v1 do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :events
 
       match "/init", to: "main#init", via: :get
