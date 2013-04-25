@@ -11,7 +11,7 @@ class Api::V1::MainController < ApplicationController
   		if version == @app.version
   			render status: 200, json: {message: "Latest version."}
   		else
-  			redner status: 302, json: {message: "Need to upgrade.", url: ""}
+  			redner status: 302, json: {message: "Need to upgrade.", url: "#{@app.store_url}"}
   		end
 	end
 

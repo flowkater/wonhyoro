@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130425035132) do
 
   create_table "apps", :force => true do |t|
     t.string   "version"
+    t.string   "store_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -47,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20130425035132) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "gcms", ["reg_id"], :name => "index_gcms_on_reg_id"
 
   create_table "movies", :force => true do |t|
     t.string   "video_url"
@@ -80,6 +83,8 @@ ActiveRecord::Schema.define(:version => 20130425035132) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "teasers", ["event_id"], :name => "index_teasers_on_event_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
