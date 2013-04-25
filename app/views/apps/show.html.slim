@@ -6,7 +6,10 @@
 			= link_to "앱버젼 관리", events_path, class: "brand"
 
 	h4 version
-	= @app.version
+	p = @app.version
+	h4 store_url
+	p = @app.store_url
+
 
 	p
 		= link_to "앱버전 수정", edit_app_path(@app), class: "btn btn-info"
