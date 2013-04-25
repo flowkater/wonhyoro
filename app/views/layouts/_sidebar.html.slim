@@ -1,0 +1,23 @@
+.well.sidebar-nav
+	ul.nav.nav-list
+		li.nav-header 메뉴
+		li.side-menu
+			= link_to "대쉬보드", dashboard_path
+		li.side-menu
+			= link_to "이벤트", events_path
+		li.side-menu
+			= link_to "공지", notis_path
+		li.side-menu
+			= link_to "앱버전관리", app_path(app_version)
+		li.nav-header 현재 로그인 시간
+		li
+			= current_user.current_sign_in_at
+		li.nav-header 지난 로그인 시간
+		li
+			= current_user.last_sign_in_at
+		li.nav-header 현재 접속 IP
+		li
+			= current_user.current_sign_in_ip
+		li.nav-header 지난 접속 IP
+		li
+			= current_user.last_sign_in_ip

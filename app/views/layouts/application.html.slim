@@ -8,8 +8,12 @@ html
 	- if user_session
 		body.background
 			= render 'layouts/header'
-			.container
-				= yield
+			.container-fluid
+				.row-fluid
+					.span2
+						= render 'layouts/sidebar'
+					.span10
+						= yield
 	- else
 		body.login-background
 			.container

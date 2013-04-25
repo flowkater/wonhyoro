@@ -5,10 +5,4 @@
 			.nav-collapse.collapse#main-menu
 			ul.nav.pull-right#main-menu-right
 				li
-					= link_to "이벤트", events_path
-				li 
-					= link_to "공지", notis_path
-				li
-					= link_to "앱버전관리", app_path(app_version)
-				li
 					= link_to "로그아웃", destroy_user_session_path, method: :delete

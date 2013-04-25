@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Api::V1::EventsController < ApplicationController
-	# before_filter :restrict_access
+	before_filter :restrict_access
 	respond_to :json
 
 	def index

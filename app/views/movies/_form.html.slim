@@ -1,3 +1,3 @@
 = simple_form_for [@videoable, @video] do |f|
-	= f.input :video_url
-	= f.button :submit
+	= f.input :video_url, label: "링크할 동영상 주소를 입력하고 버튼을 눌러주세요.", required: false
+	= f.button :submit, '동영상 주소 올리기', class: "btn btn-success"

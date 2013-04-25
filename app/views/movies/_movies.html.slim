@@ -1,4 +1,5 @@
 #movies.row
 	- @videos.each do |video|
 		.movie.span6
-			= video.video_url
+			= youtube_embed(video.video_url).html_safe
+			p = link_to 'x', [@videoable, video], confirm: 'Are you sure?', method: :delete, class: "btn btn-danger"

@@ -1,2 +1,14 @@
-h1 Main#dashboard
-p Find me in app/views/main/dashboard.html.slim
+.dashboard
+	.navbar
+		.navbar-inner
+			.brand
+				i.icon-home
+			= link_to "대쉬보드", dashboard_path, class: "brand"
+	= image_tag "wonhyoro-dashboard.jpg", class: "wonhyoro-dashboard-image"
+	br
+	br
+	.gcm-status
+		h5 현재 앱 받은 사람(GCM 푸쉬 활성화 갯수:누적)
+		p = gcm_total
+
+		

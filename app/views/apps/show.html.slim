@@ -1,6 +1,12 @@
-h1 앱버전
-h4 version
-= @app.version
+.app
+	.navbar
+		.navbar-inner
+			.brand
+				i.icon-star
+			= link_to "앱버젼 관리", events_path, class: "brand"
 
-p
-	= link_to "앱버전 수정", edit_app_path(@app), class: "btn btn-info"
+	h4 version
+	= @app.version
+
+	p
+		= link_to "앱버전 수정", edit_app_path(@app), class: "btn btn-info"

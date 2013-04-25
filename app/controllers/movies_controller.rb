@@ -19,6 +19,15 @@ class MoviesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@video = Movie.find(params[:id])
+		@videoable = @video.videoable
+
+		if @video.destroy
+			redirect_to @videoable, notice: "video deleted."	
+		end
+	end
+
 	private
 
 	def load_videoable

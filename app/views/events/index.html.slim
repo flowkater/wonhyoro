@@ -1,24 +1,29 @@
-h1 이벤트 리스트
+.events
+	.navbar
+		.navbar-inner
+			.brand
+				i.icon-star
+			= link_to "이벤트관리", events_path, class: "brand"
 
-table.table.table-striped
-	tr
-		th 이벤트 제목
-		th 이벤트 내용
-		th 생성날짜
-		th
-	- @events.each do |event|
+	table.table.table-striped
 		tr
-			td = event.title
-			td = event.content
-			td = event.created_day
-			td 
-				= link_to '보기', event, class: "btn btn-success"
-				|&nbsp;
-				= link_to '수정', edit_event_path(event), class: "btn btn-info"
-				|&nbsp;
-				= link_to '삭제', event, confirm: 'Are you sure?', method: :delete, class: "btn btn-danger"
+			th 이벤트 제목
+			th 이벤트 내용
+			th 생성날짜
+			th
+		- @events.each do |event|
+			tr
+				td = event.title
+				td = event.content
+				td = event.created_day
+				td 
+					= link_to '보기', event, class: "btn btn-success"
+					|&nbsp;
+					= link_to '수정', edit_event_path(event), class: "btn btn-info"
+					|&nbsp;
+					= link_to '삭제', event, confirm: 'Are you sure?', method: :delete, class: "btn btn-danger"
 
-br
+	br
 
-.pull-right
-	= link_to '새로운 이벤트', new_event_path, class: "btn btn-primary btn-small"
+	.pull-right
+		= link_to '새로운 이벤트', new_event_path, class: "btn btn-primary btn-small"

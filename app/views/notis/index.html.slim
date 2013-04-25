@@ -1,13 +1,18 @@
-h1 공지 리스트
+.notis
+	.navbar
+		.navbar-inner
+			.brand
+				i.icon-star
+			= link_to "공지 관리", events_path, class: "brand"
 
-table.table.table-striped
-	tr
-		th 공지 내용
-		th
-	- @notis.each do |noti|
+	table.table.table-striped
 		tr
-			td = noti.content
-			td 
-				= link_to 'Push', push_noti_path(noti), confirm: '푸쉬를 보내겠습니까?', class: "btn btn-primary btn-larger", method: :put
+			th 공지 내용
+			th
+		- @notis.each do |noti|
+			tr
+				td = noti.content
+				td 
+					= link_to 'Push', push_noti_path(noti), confirm: '푸쉬를 보내겠습니까?', class: "btn btn-primary btn-larger", method: :put
 
-= link_to '새 공지 띄우기', new_noti_path, class: "btn btn-primary btn-small"
+	= link_to '새 공지 띄우기', new_noti_path, class: "btn btn-primary btn-small"

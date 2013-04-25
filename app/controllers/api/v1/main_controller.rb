@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class Api::V1::MainController < ApplicationController
+  before_filter :restrict_access
 	respond_to :json
 
 	# root_path/version_check?version=$
@@ -31,5 +32,11 @@ class Api::V1::MainController < ApplicationController
 	        render status: 200, json:{message: "Register, Success"}
       	end
   		end
+  end
+
+  def restrict_access
+    authenticate_or_request_with_http_token do |token, options|
+      ApiKey.exists?(access_token: token)
+    end
   end
 end

@@ -1,20 +1,20 @@
-p = @event.title
-p = @event.content
+.event
+	.navbar
+		.navbar-inner
+			.brand
+				i.icon-star
+			= link_to "이벤트관리 >", events_path, class: "brand"
+			= link_to "#{@event.title}", event_path(@event), class: "brand"
 
-.tabbable.tabs-left
-	ul.nav.nav-tabs
-		li.active
-			a href="#picture" data-toggle="tab" 포스터(picture)
-		li
-			a href="#teaser" data-toggle="tab" 티저
-	.tab-content
-		.tab-pane.active#picture
-			= render 'pictures/pictures'
-			= render 'pictures/form'
-		.tab-pane#teaser
-			= render 'teasers/teasers'
-			= link_to '새로운 티저 만들기', new_event_teaser_path(@event), class: "btn btn-info"
+	h4 이벤트 내용
+	span = @event.content
 
-= link_to 'Edit', edit_event_path(@event)
-'|
-= link_to 'Back', events_path
+	h4 포스터(picture)
+	= render 'pictures/form'
+	.poster-loc
+		= render 'pictures/pictures'
+
+	h4 티저(teaser)
+	.teaser-loc
+		= render 'teasers/teasers'
+		= link_to '새로운 티저 만들기', new_event_teaser_path(@event), class: "btn btn-info"
