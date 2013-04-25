@@ -27,6 +27,21 @@ class TeasersController < ApplicationController
 		@video = Movie.new
 	end
 
+	def edit
+		@teaser = Teaser.find(params[:id])
+	end
+
+	def update
+		@teaser = Teaser.find(params[:id])
+		@event = @teaser.event
+
+		if @teaser.update_attributes(params[:teaser])
+			redirect_to @event, notice: 'teaser was updated.'
+		else
+			render action: "edit"
+		end
+	end
+
 	def destroy
 		@teaser = Teaser.find(params[:id])
 		@event = @teaser.event
@@ -43,6 +58,6 @@ class TeasersController < ApplicationController
 
 		# PushteasersWorker.perform_async(@teaser.id)
 
-		redirect_to @event, notice: '푸쉬를 보냈습니다.'
+		redirect_to @event, notice: '티저 푸쉬를 보냈습니다.'
 	end
 end

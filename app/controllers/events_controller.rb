@@ -40,7 +40,7 @@ class EventsController < ApplicationController
     if @event.update_attributes(params[:event])
       redirect_to @event, notice: 'event was successfully updated.'
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render action: "edit"
     end
   end
 

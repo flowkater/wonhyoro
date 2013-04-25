@@ -22,6 +22,7 @@ Wonhyoro::Application.routes.draw do
       resources :events
 
       match "/init", to: "main#init", via: :get
+      match "/version_check", to: "main#version_check", via: :get
     end
   end
 

@@ -1,6 +1,19 @@
 # encoding: UTF-8
 class Api::V1::MainController < ApplicationController
 	respond_to :json
+
+	# root_path/version_check?version=$
+	def version_check
+		version = params[:version]
+  		@app = App.first
+  		
+  		if version == @app.version
+  			render status: 200, json: {message: "Latest version."}
+  		else
+  			redner status: 302, json: {message: "Need to upgrade.", url: ""}
+  		end
+	end
+
 	# root_path/init?reg_id=$
   def init
   		regid = params[:reg_id]

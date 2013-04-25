@@ -21,6 +21,7 @@ class NotisController < ApplicationController
 
 	def push
 		@noti = Noti.find(params[:id])
-		redirect_to notis_path, notice: "푸쉬를 보냈습니다."
+		@noti.gcm_send		
+		redirect_to notis_path, notice: "공지 푸쉬를 보냈습니다."
 	end
 end
