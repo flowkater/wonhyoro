@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: a25eebe8205e4e63899873b716535def6c1f5a9d
+  specs:
+    nested_form (0.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -110,7 +116,6 @@ GEM
     multi_json (1.7.2)
     multi_xml (0.5.3)
     mysql2 (0.3.11)
-    nested_form (0.3.2)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.1)
@@ -242,7 +247,7 @@ DEPENDENCIES
   less-rails
   meta_request
   mysql2
-  nested_form
+  nested_form!
   rabl
   rails (= 3.2.12)
   rails-erd

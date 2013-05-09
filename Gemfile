@@ -54,7 +54,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem "nested_form"
+  gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 end
 
 gem 'jquery-rails'
