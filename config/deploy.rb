@@ -72,10 +72,10 @@ namespace :deploy do
   before "deploy", "deploy:check_revision"
 end
 
-namespace :bundle do
-  desc "run bundle install and ensure all gem requirements are met"
-    task :install do
-      run "cd #{current_path} && bundle install --without development test"
-    end
-  end
-before "deploy:restart", "bundle:install"
+# namespace :bundle do
+#   desc "run bundle install and ensure all gem requirements are met"
+#     task :install do
+#       run "cd #{current_path} && bundle install --without development test"
+#     end
+#   end
+# before "deploy:restart", "bundle:install"

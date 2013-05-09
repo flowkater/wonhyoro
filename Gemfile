@@ -37,6 +37,9 @@ gem 'carrierwave'
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', require: nil
 
+
+gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -53,8 +56,6 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-
-  gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 end
 
 gem 'jquery-rails'
