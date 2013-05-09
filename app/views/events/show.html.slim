@@ -9,12 +9,17 @@
 	h4 이벤트 내용
 	span = @event.content
 
+	h4 티저(teaser)
+	.teaser-loc
+		.plus-btn = link_to new_event_teaser_path(@event), class: "btn btn-info new-teaser" do
+			.plus +
+		= render 'teasers/teasers'
+	
+		
+
 	h4 포스터(picture)
 	= render 'pictures/form'
 	.poster-loc
 		= render 'pictures/pictures'
 
-	h4 티저(teaser)
-	.teaser-loc
-		= render 'teasers/teasers'
-		= link_to '새로운 티저 만들기', new_event_teaser_path(@event), class: "btn btn-info"
+	

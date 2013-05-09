@@ -10,13 +10,15 @@
 	h4 티저 내용
 	span = @teaser.content
 
-	h4 티저 포스터
-	= render 'pictures/form'
-	.poster-loc
-		= render 'pictures/pictures'
-	
-	h4 동영상
-	= render 'movies/form'
-	.poster-loc
-		= render 'movies/movies'
+	.row-fluid
+		.span6
+			h4 티저 포스터
+			= render 'pictures/form'
+			.poster-loc
+				= render 'pictures/pictures'
+		.span6
+			h4 동영상
+			= render 'movies/form'
+			.poster-loc
+				= render 'movies/movies'
 	

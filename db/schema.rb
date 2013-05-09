@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425035132) do
+ActiveRecord::Schema.define(:version => 20130509171609) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -39,8 +39,11 @@ ActiveRecord::Schema.define(:version => 20130425035132) do
     t.string   "title"
     t.string   "content"
     t.boolean  "is_vote"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "count",      :default => 0
+    t.date     "fromdate"
+    t.date     "todate"
   end
 
   create_table "gcms", :force => true do |t|

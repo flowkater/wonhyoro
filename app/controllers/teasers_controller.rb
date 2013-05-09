@@ -55,6 +55,7 @@ class TeasersController < ApplicationController
 		@teaser = Teaser.find(params[:id])	
 		@event = @teaser.event
 		@teaser.gcm_send
+		@event.count_plus
 
 		# PushteasersWorker.perform_async(@teaser.id)
 

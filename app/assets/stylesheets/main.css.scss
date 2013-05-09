@@ -71,3 +71,44 @@ li.side-menu{
 	font-size: 17px;
 }
 
+.new-teaser{
+	margin-left: 20px;
+	width: 170px;
+	height: 312px;
+	text-align: center;
+	font-size: 50px;
+	.plus{
+		margin-top: 150px;
+	}
+}
+
+.teaser-loc{
+	overflow: hidden;
+	.plus-btn{
+		float: left;
+	}
+}
+
+.teaser-card{
+	margin-left: 20px;
+	border: 1px solid;
+	width: 200px;
+	height: 320px;
+	float: left;
+	margin-bottom: 20px;
+
+	.content{
+		padding: 10px;
+		text-align: center;
+
+		img{
+			height: 230px;
+		}
+
+		.youtube_size{
+			width: 150px;
+			height: 210px;
+		}
+	}
+}
+

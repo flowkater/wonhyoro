@@ -1,5 +1,5 @@
 class Teaser < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content, :pictures_attributes, :movies_attributes
 
   # 이미지 모델 polymorphic
   has_many :pictures, as: :imageable
@@ -8,6 +8,9 @@ class Teaser < ActiveRecord::Base
   has_many :movies, as: :videoable
 
   belongs_to :event
+
+  accepts_nested_attributes_for :pictures
+  accepts_nested_attributes_for :movies
 
   def gcm_send
     gcm = GCM.new(ENV['GCM_API_KEY'])

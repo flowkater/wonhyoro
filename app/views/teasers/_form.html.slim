@@ -1,3 +1,17 @@
-= simple_form_for [@event, @teaser] do |f|
-	= f.input :content
-	= f.button :submit
+= simple_nested_form_for [@event, @teaser] do |f|
+	= f.input :content, label: "내용"
+	.row-fluid
+		.span6
+			= f.fields_for :pictures do |i|
+				= i.input :image, label: "사진을 올려주세요.", required: false
+				= i.link_to_remove "x", class: "btn btn-danger"
+			= f.link_to_add "사진 더 올리기", :pictures, class: "btn btn-info"
+		.span6
+			= f.fields_for :movies do |v|
+				= v.input :video_url, label: "링크할 동영상 주소를 입력해주세요.", required: false
+				= v.link_to_remove "x", class: "btn btn-danger"
+			= f.link_to_add "동영상 더 올리기", :movies, class: "btn btn-info"
+	
+	br
+	.pull-right
+		= f.button :submit, "티저 만들기", class: "btn btn-primary btn-large"

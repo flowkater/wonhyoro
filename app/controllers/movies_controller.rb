@@ -1,5 +1,5 @@
+# encoding: UTF-8
 class MoviesController < ApplicationController
-
 	before_filter :load_videoable, :authenticate_user!
 
 	def index

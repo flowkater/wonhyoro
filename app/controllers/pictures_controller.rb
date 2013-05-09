@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PicturesController < ApplicationController
 	before_filter :load_imageable, :authenticate_user!
 
