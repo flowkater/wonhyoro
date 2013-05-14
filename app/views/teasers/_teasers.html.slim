@@ -3,15 +3,16 @@
 		.teaser-card
 			.content
 				h5 = teaser.content
-				- if @p = teaser.pictures.first
-					.teaser-card-image
-						= image_tag @p.image
-					.push-btn
-						= link_to 'Push', push_teaser_path(teaser), confirm: '푸쉬를 보내겠습니까?', class: "btn btn-primary btn-larger", method: :put
-				- elsif @v = teaser.movies.first
-					= youtube_embed(@v.video_url).html_safe
-					.push-btn
-						= link_to 'Push', push_teaser_path(teaser), confirm: '푸쉬를 보내겠습니까?', class: "btn btn-primary btn-larger", method: :put
+				- if @p = teaser.pictures.first || @v = teaser.movies.first
+					- if @p
+						.teaser-card-image
+							= image_tag @p.image
+					- elsif @v
+						.teaser-card-image
+							= youtube_embed(@v.video_url).html_safe
+					- unless teaser.push_check
+						.push-btn
+							= link_to 'Push', push_teaser_path(teaser), confirm: '푸쉬를 보내겠습니까?', class: "btn btn-primary btn-larger", method: :put
 				- else
 					span 사진 또는 동영상을 업데이트
 				

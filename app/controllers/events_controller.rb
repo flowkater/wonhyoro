@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @teasers = @event.teasers
     @imageable = @event
-    @images = @imageable.pictures
+    @images = @imageable.pictures.most_recent
     @image = Picture.new
   end
 

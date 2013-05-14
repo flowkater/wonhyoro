@@ -29,4 +29,8 @@ class Event < ActiveRecord::Base
 	def event_duration
 		"#{fromdate.strftime("%Y. %m. %d.")} ~ #{todate.strftime("%Y. %m. %d.")}"
 	end
+
+	def recent_image
+		pictures.first.image.to_s
+	end
 end

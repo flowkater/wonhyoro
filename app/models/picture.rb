@@ -4,4 +4,6 @@ class Picture < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
 	validates :image, presence: true
+
+	scope :most_recent, order("created_at desc")
 end

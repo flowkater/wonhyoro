@@ -8,6 +8,18 @@ class Api::V1::EventsController < ApplicationController
 		render 'events/v1/index'
 	end
 
+	def event_poster
+		@event = Event.find(params[:id])
+		@first = @event.pictures.most_recent
+		render 'events/v1/event_poster'
+	end
+
+	def event_teasers
+		@event = Event.find(params[:id])
+		@teasers = @event.teasers.most_recent
+		render 'events/v1/event_teasers'
+	end
+
 	private
 
 	def restrict_access

@@ -34,6 +34,20 @@ class Api::V1::MainController < ApplicationController
   		end
   end
 
+  # root_path/unregi?reg_id=$
+  def unregi
+    regid = params[:reg_id]
+
+    @gcm = Gcm.find_by_reg_id(regid)
+    
+    if @gcm
+      @gcm.destroy
+      render status: 200,json: {message: "RegisterId destroy Success"}
+    else
+      render status: :unprocessable_entity, json: {response: 'Error'}
+    end
+  end
+
   def restrict_access
     authenticate_or_request_with_http_token do |token, options|
       ApiKey.exists?(access_token: token)

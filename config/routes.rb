@@ -13,10 +13,17 @@ Wonhyoro::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      resources :events
+      resources :events do
+        member do
+          get 'event_poster'
+          get 'event_teasers'          
+        end
+      end
 
       match "/init", to: "main#init", via: :get
       match "/version_check", to: "main#version_check", via: :get
+
+
     end
   end
 

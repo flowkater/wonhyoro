@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509171609) do
+ActiveRecord::Schema.define(:version => 20130514110800) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130509171609) do
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "push_check"
   end
 
   add_index "teasers", ["event_id"], :name => "index_teasers_on_event_id"

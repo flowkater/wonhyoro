@@ -1,5 +1,5 @@
 class Teaser < ActiveRecord::Base
-  attr_accessible :content, :pictures_attributes, :movies_attributes
+  attr_accessible :content, :pictures_attributes, :movies_attributes, :push_check
 
   # 이미지 모델 polymorphic
   has_many :pictures, as: :imageable
@@ -12,10 +12,13 @@ class Teaser < ActiveRecord::Base
   accepts_nested_attributes_for :pictures
   accepts_nested_attributes_for :movies
 
+  scope :most_recent, order("created_at desc")
+
   def gcm_send
     gcm = GCM.new(ENV['GCM_API_KEY'])
     options = {data: {content: content, movies: movie_urls, images: image_urls}, collapse_key: Time.now}
     response = gcm.send_notification(gcm_reg_ids, options)
+    update_attributes(push_check: true)
   end
 
   def gcm_reg_ids
