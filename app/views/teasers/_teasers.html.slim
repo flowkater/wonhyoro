@@ -6,7 +6,7 @@
 				- if @p = teaser.pictures.first || @v = teaser.movies.first
 					- if @p
 						.teaser-card-image
-							= image_tag @p.image
+							= image_tag @p.image_url
 					- elsif @v
 						.teaser-card-image
 							= youtube_embed(@v.video_url).html_safe
