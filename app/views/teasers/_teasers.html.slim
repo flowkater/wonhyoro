@@ -3,11 +3,11 @@
 		.teaser-card
 			.content
 				h5 = teaser.content
-				- if @p = teaser.pictures.first || @v = teaser.movies.first
-					- if @p
+				- if teaser.pictures.first || teaser.movies.first
+					- if @p = teaser.pictures.first
 						.teaser-card-image
 							= image_tag @p.image_url
-					- elsif @v
+					- elsif @v = teaser.movies.first
 						.teaser-card-image
 							= youtube_embed(@v.video_url).html_safe
 					- unless teaser.push_check
